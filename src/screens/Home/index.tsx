@@ -115,10 +115,8 @@ export function Home() {
 
   return (
     <Container>
+      <Header/>
       <List
-        ListHeaderComponent={() => (
-            <Header/>
-        )}
         ItemSeparatorComponent={() => <View style={{ height: 10 }} />}
         data={pokemons}
         renderItem={({ item }) => <PokemonCard data={item} />}

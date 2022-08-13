@@ -2,10 +2,8 @@ import React from 'react';
 import { Text, View } from 'react-native';
 import theme from '../../styles/theme';
 
-type Types = 'grass' | 'poison' | 'fire' | 'flying' | 'water'
-
 interface PokemonTypesProps {
-  types: Types[]
+  types: string[]
 }
 
 export function PokemonTypes({ types }: PokemonTypesProps) {

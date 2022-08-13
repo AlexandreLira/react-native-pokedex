@@ -1,6 +1,6 @@
 export interface PokemonDTO {
     name: string;
-    id: string;
+    id: number;
     weight: number;
     sprites: {
         other: {

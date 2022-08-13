@@ -1,16 +1,45 @@
 import React from 'react';
-import { Text } from 'react-native';
-import { Container, ProfileContainer, ProfileImage, ProfileName, Title } from './styles';
+import { Text, View } from 'react-native';
+import {
+    Badge,
+    BadgeText,
+    Container,
+    ProfileContainer,
+    ProfileImage,
+    ProfileName,
+    SaveContainer,
+    Title
+} from './styles';
 
-export function Header(){
-    const profileURL = 'https://i.pinimg.com/originals/81/63/94/816394a06b8c3a129155a4dd182fe79b.jpg'
+import { usePokemons } from '../../hooks/usePokemons';
+import theme from '../../styles/theme';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { profileURL } from '../../utils/constant';
+
+
+export function Header() {
+    const { savedPokemons, saveOrUnsalvePokemon } = usePokemons()
+    const { colors } = theme
     return (
         <Container>
             <ProfileContainer>
-                <ProfileImage source={{uri: profileURL}}/>
+                <ProfileImage source={{ uri: profileURL }} />
                 <ProfileName>Ash</ProfileName>
             </ProfileContainer>
-            <Text>10 pokemons salvos</Text>
+
+            <SaveContainer>
+                {Boolean(savedPokemons.length) ? (
+                    <Badge>
+                        <BadgeText>{savedPokemons.length > 99 ? '+99' : savedPokemons.length}</BadgeText>
+                    </Badge>
+
+                ) : null}
+                <MaterialCommunityIcons
+                    name="pokeball"
+                    size={40}
+                    color={colors.gray}
+                />
+            </SaveContainer>
         </Container>
     )
 }
