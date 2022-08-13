@@ -22,6 +22,8 @@ export const SaveButton = styled.TouchableOpacity`
 
 `;
 
+export const ImageContainer = styled.TouchableOpacity`
+` 
 export const PokemonImage = styled.Image`
     height: 100px;
     width: 100px;
