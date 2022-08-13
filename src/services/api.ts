@@ -5,12 +5,8 @@ interface Pokemons {
     limit: number;
     offset: number
 }
-
-interface PokemonID {
-    id: string
-}
  
-export const searchPokemon = async (id: PokemonID): Promise<PokemonDTO | undefined> => {
+export const searchPokemon = async (id: number): Promise<PokemonDTO> => {
     try {
         const url = `https://pokeapi.co/api/v2/pokemon/${id}`
         const response = await fetch(url)
@@ -18,6 +14,7 @@ export const searchPokemon = async (id: PokemonID): Promise<PokemonDTO | undefin
         return data
     } catch (error) {
         console.warn(error)
+        return {} as PokemonDTO
     }
 }
 

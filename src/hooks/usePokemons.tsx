@@ -17,7 +17,7 @@ interface PokemonsContextData {
 export const PokemonsContext = createContext({} as PokemonsContextData);
 
 export function PokemonsProvider({ children }: PokemonsProviderProps) {
-    const [savedPokemons, setSavedPokemons] = useState<number[]>([])
+    const [savedPokemons, setSavedPokemons] = useState<number[]>([1,2,3,4,5,6])
 
     function saveOrUnsalvePokemon(id: number) {
         if(savedPokemons.includes(id)){

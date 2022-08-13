@@ -2,6 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { ThemeProvider } from 'styled-components';
 import { PokemonsProvider } from './src/hooks/usePokemons';
+import { Routes } from './src/routes';
 import { Home } from './src/screens/Home';
 import theme from './src/styles/theme';
 
@@ -14,7 +15,7 @@ export default function App() {
         backgroundColor={theme.colors.background_primary}
       />
       <PokemonsProvider>
-        <Home/>
+        <Routes/>
       </PokemonsProvider>
     </ThemeProvider>
   );
