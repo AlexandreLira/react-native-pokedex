@@ -9,7 +9,7 @@ import {
   PokemonName,
   SaveButton
 } from "./styles";
-import { PokemonTypes } from "../PokemomTypes";
+import { PokemonTypes } from "../PokemonTypes";
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { usePokemons } from "../../hooks/usePokemons";
 import { PokemonDTO } from "../../dtos/PokemonDTO";

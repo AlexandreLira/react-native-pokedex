@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
+
 import { StatusBar } from 'expo-status-bar';
+import { MaterialCommunityIcons, Ionicons } from '@expo/vector-icons';
 import { useNavigation, useRoute } from '@react-navigation/native';
 
 import { PokemonDTO } from '../../dtos/PokemonDTO';
@@ -17,12 +19,13 @@ import {
   Title
 } from './styles';
 
-import { MaterialCommunityIcons, Ionicons } from '@expo/vector-icons';
-import { PokemonTypes } from '../../components/PokemomTypes';
+import {
+  PokemonTypes, 
+  Stats
+} from '../../@share/components'
+
 import theme from "../../styles/theme";
 import { pokemonImageNotFound } from '../../utils/constant';
-import { Stats } from '../../components/Stats';
-
 interface Params {
   data: PokemonDTO
 }

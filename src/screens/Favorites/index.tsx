@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { View } from 'react-native';
 
-import { PokemonCard } from '../../components/PokemomCard';
+import {
+  PokemonCard, 
+} from '../../@share/components'
+
 import { searchPokemon } from '../../services/api';
-import { Container, List } from '../Favorites/styles';
+import { Container, List } from './styles';
 import { PokemonDTO } from '../../dtos/PokemonDTO';
 import { usePokemons } from '../../hooks/usePokemons'
 

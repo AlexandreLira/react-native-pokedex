@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import { FlatList, View } from 'react-native';
-import { Button } from '../../components/Button';
-import { Header } from '../../components/Header';
-import { PokemonCard } from '../../components/PokemomCard';
+import { View } from 'react-native';
 import { getAllPokemons, getPokemonData } from '../../services/api';
-import { Container, List, PaginationContainer, Title } from './styles';
+import { Container, List, PaginationContainer } from './styles';
 import { PokemonDTO } from '../../dtos/PokemonDTO';
-import { usePokemons } from '../../hooks/usePokemons'
-import { PaginationPickerSelect } from '../../components/PaginationPickerSelect';
+
+import {
+  PaginationPickerSelect, 
+  PokemonCard,
+  Header,
+  Button
+} from '../../@share/components'
 
 export function Home() {
   const [pokemons, setPokemons] = useState<PokemonDTO[]>([])
