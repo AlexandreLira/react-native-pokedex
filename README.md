@@ -1,6 +1,6 @@
 # Pokedex
 
-![cryptomoon](https://user-images.githubusercontent.com/58709086/150032352-ad925491-97ec-4acc-8b7f-e0d0adef7dad.jpg)
+![Pokedex](https://user-images.githubusercontent.com/58709086/184535080-ba47eea1-9555-4b59-8682-c0473c0561ea.png)
 
 ## Built With 🔨
 - React Native
