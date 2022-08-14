@@ -23,7 +23,7 @@ export function StackRoutes() {
         name="Favorites"
         component={Favorites}
         options={{
-          title: 'Seus favoritos'
+          title: 'My favorites'
         }}
       />
 

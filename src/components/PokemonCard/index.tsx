@@ -30,7 +30,7 @@ export function PokemonCard({ data }: PokemonCardProps) {
     <Container key={data.id}>
 
       <Header>
-        <PokemonName>{data.name}</PokemonName>
+        <PokemonName>{data.name.replace('-', ' ')}</PokemonName>
         <SaveButton onPress={() => saveOrUnsalvePokemon(data.id)}>
           <MaterialCommunityIcons
             name="pokeball"

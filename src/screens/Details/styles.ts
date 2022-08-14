@@ -37,6 +37,7 @@ export const PokemonId = styled.Text`
 `;
 
 export const ImageContent = styled.View`
+  margin-bottom: -10%;
   padding-left: 4%;
   padding-right: 4%;
 `;
@@ -46,15 +47,21 @@ export const PokemonImage = styled.Image`
   z-index: 99;
 `;
 
-export const InformationContent = styled.View`
-  margin-top: -10%;
+export const InformationContent = styled.ScrollView`
   border-top-left-radius: 50px;
   border-top-right-radius: 50px;
   padding: 15% 4% 4% 4%;
-  flex: 1;
+  height: 110%;
   background-color: white;
 `;
 
 export const Title = styled.Text`
   font-size: 20px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+`;
+export const Ability = styled.Text`
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  color: ${({ theme }) => theme.colors.gray_dark};
 `;

@@ -1,17 +1,45 @@
+type PokemonTypes =  'grass' |
+'poison' |
+'fire' |
+'flying' |
+'water' |
+'bug' |
+'normal' |
+'electric' |
+'ground' |
+'fairy' |
+'fighting' |
+'psychic' |
+'ice' |
+'ghost' |
+'rock' |
+'dark' |
+'steel' |
+'dragon'
+
 export interface PokemonDTO {
+  abilities: {
+    ability: {
+      name: string;
+      url: string;
+    },
+    is_hidden: boolean;
+    slot: number;
+  }[],
+
   name: string;
   id: number;
   weight: number;
   sprites: {
     other: {
       home: {
-        front_default: string
+        front_default: string;
       }
     }
   }
   types: {
     type: {
-      name: string;
+      name: PokemonTypes;
     }
   }[];
 

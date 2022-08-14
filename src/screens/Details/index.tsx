@@ -7,6 +7,7 @@ import { useNavigation, useRoute } from '@react-navigation/native';
 import { PokemonDTO } from '../../dtos/PokemonDTO';
 import { usePokemons } from '../../hooks/usePokemons';
 import {
+  Ability,
   Button,
   Container,
   Header,
@@ -54,13 +55,13 @@ export function Details() {
           <MaterialCommunityIcons
             name="pokeball"
             size={30}
-            color={savedPokemons.includes(data.id) ? colors.red : colors.normal}
+            color={savedPokemons.includes(data.id) ? colors.red : colors.gray_dark}
           />
         </Button>
       </Header>
 
       <NameContent>
-        <PokemonName>{data.name}</PokemonName>
+        <PokemonName>{data.name.replace('-', ' ')}</PokemonName>
         <PokemonId>#{String(data.id).padStart(3, '0')}</PokemonId>
       </NameContent>
 
@@ -73,16 +74,23 @@ export function Details() {
       </ImageContent>
 
       <InformationContent>
-        <Title>STATS</Title>
+        <Title>Base STATS</Title>
 
         {data.stats.map(item => (
           <Stats
-            key={item.stat.url}
+            key={item.stat.name}
             stats={item}
             color={color}
           />
 
         ))}
+
+      <Title>Abilities</Title>
+
+      {data.abilities.map(item => (
+          <Ability key={item.ability.name}>{item.ability.name}</Ability>
+      ))}
+
       </InformationContent>
 
 

@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import { ActivityIndicator, ButtonProps } from 'react-native';
-import { Container, PickerSelect } from './styles';
+import React from 'react';
+import { ActivityIndicator } from 'react-native';
+import { Container, PickerSelect, PickerSelectItem } from './styles';
 
 interface Props {
   data: {
@@ -27,7 +27,7 @@ export function PaginationPickerSelect({
             handleChangePage(value)
           }}>
           {data.map((item, index) => (
-            <PickerSelect
+            <PickerSelectItem
               key={String(item.id)}
               label={String(item.id)}
               value={item.offset}

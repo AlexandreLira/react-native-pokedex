@@ -15,5 +15,8 @@ export const Container = styled.View`
 export const PickerSelect = styled(Picker).attrs({
     itemStyle: {textAlign: 'right'},
 })`
-    width: 100%
+    width: 100%;
+`;
+
+export const PickerSelectItem = styled(Picker.Item)`
 `;

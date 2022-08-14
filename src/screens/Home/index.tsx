@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { View } from 'react-native';
+import React, { useEffect, useRef, useState } from 'react';
+import { FlatList, View } from 'react-native';
 import { getAllPokemons, getPokemonData } from '../../services/api';
 import { Container, List, PaginationContainer } from './styles';
 import { PokemonDTO } from '../../dtos/PokemonDTO';
@@ -22,7 +22,9 @@ export function Home() {
   const [offsetSeleted, setOffsetSeleted] = useState<number>(0)
   const [paginationPages, setPaginationPages] = useState<any>([])
 
-  const limitOfPokemons = 10
+  const ref = useRef<FlatList>()
+
+  const limitOfPokemons = 20
 
   async function fetchPokemons(offset: number) {
     setLoading(true)
@@ -61,11 +63,19 @@ export function Home() {
     setPaginationPages(pages)
   }
 
+  function scrollToTop(){
+    ref.current?.scrollToIndex({
+      index: 0,
+      animated: true
+    })
+  }
+
   async function handleGetNextPokemons() {
     setNextLoading(true)
     await fetchPokemons(offsetSeleted + limitOfPokemons)
     setOffsetSeleted(state => state + limitOfPokemons)
     setNextLoading(false)
+    scrollToTop()
   }
 
   async function handleGetPreviusPokemons() {
@@ -73,6 +83,7 @@ export function Home() {
     await fetchPokemons(offsetSeleted - limitOfPokemons)
     setOffsetSeleted(state => state - limitOfPokemons)
     setPreviusLoading(false)
+    scrollToTop()
   }
 
   async function handleChangePage(offset: number) {
@@ -80,6 +91,7 @@ export function Home() {
     await fetchPokemons(offset)
     setOffsetSeleted(offset)
     setPageSelectLoading(false)
+    scrollToTop()
   }
 
   useEffect(() => {
@@ -95,7 +107,7 @@ export function Home() {
           loading={previusLoading}
           disabled={Boolean(offsetSeleted == 0)}
         >
-          Anterior
+          Previus
         </Button>
         <PaginationPickerSelect 
           data={paginationPages}
@@ -108,7 +120,7 @@ export function Home() {
           loading={nextLoading}
           disabled={Boolean(pokemons.length < limitOfPokemons)}
         >
-          Próximo
+          Next
         </Button>
 
       </PaginationContainer>
@@ -119,10 +131,11 @@ export function Home() {
     <Container>
       <Header/>
       <List
+        ref={ref}
         ItemSeparatorComponent={() => <View style={{ height: 10 }} />}
         data={pokemons}
-        renderItem={({ item }) => <PokemonCard data={item} />}
-        keyExtractor={(_, index) => String(index)}
+        renderItem={({ item }: {item: PokemonDTO}) => <PokemonCard data={item} />}
+        keyExtractor={(_: any, index: number) => String(index)}
         ListFooterComponent={() => <Pagination/>}
       />
     </Container>
