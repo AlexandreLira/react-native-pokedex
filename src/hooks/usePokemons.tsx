@@ -2,8 +2,12 @@ import React, {
     createContext,
     useContext,
     useState,
-    ReactNode
-} from "react";
+    ReactNode,
+    useEffect
+} from 'react';
+
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 
 interface PokemonsProviderProps {
     children: ReactNode;
@@ -17,17 +21,29 @@ interface PokemonsContextData {
 export const PokemonsContext = createContext({} as PokemonsContextData);
 
 export function PokemonsProvider({ children }: PokemonsProviderProps) {
-    const [savedPokemons, setSavedPokemons] = useState<number[]>([1,2,3,4,5,6])
+    const [savedPokemons, setSavedPokemons] = useState<number[]>([])
 
-    function saveOrUnsalvePokemon(id: number) {
+    async function saveOrUnsalvePokemon(id: number) {
         if(savedPokemons.includes(id)){
-            setSavedPokemons(state => state.filter(item => item !== id))
+            const filter = savedPokemons.filter(item => item !== id)
+            await AsyncStorage.setItem('@savedPokemons', JSON.stringify(filter))
+            setSavedPokemons(filter)
             return
         }
-
-        setSavedPokemons(state => [...state, id])
+        const filter = [...savedPokemons, id]
+        await AsyncStorage.setItem('@savedPokemons', JSON.stringify(filter))
+        setSavedPokemons(filter)
 
     }
+
+    useEffect(() => {
+        async function loadSavedPokemonsStorage(){
+            const storage = await AsyncStorage.getItem('@savedPokemons')
+            const pokemonsId = JSON.parse(storage)
+            setSavedPokemons(pokemonsId)
+        }
+        loadSavedPokemonsStorage()
+    }, [])
 
     return (
         <PokemonsContext.Provider value={{ savedPokemons, saveOrUnsalvePokemon }}>
