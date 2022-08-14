@@ -19,6 +19,7 @@ The design was inspiration in two projects than i find on [Dribbble](https://dri
 - Styled Components
 - Async Storage
 - React Navigation
+- Animated
 
 ## Getting Started 💻
 
