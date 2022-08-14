@@ -6,7 +6,7 @@ See all the legendary pokemons and information like hp, attack, defense, special
 ![Pokedex](https://user-images.githubusercontent.com/58709086/184535080-ba47eea1-9555-4b59-8682-c0473c0561ea.png)
 
 # Design inspiration
-The design was inspiration in two design than i find on [Dribbble](https://dribbble.com/), the proposal was to be simple and functional!
+The design was inspiration in two projects than i find on [Dribbble](https://dribbble.com/), the proposal was to be simple and functional!
 - Design by [Coletiv Studio](https://dribbble.com/shots/18556089-Coletiv-Pok-mon-challenge) and [Saepul Nahwan](https://dribbble.com/shots/6540871-Pokedex-App)
 
 ![Inspiration](https://user-images.githubusercontent.com/58709086/184536150-a3e0904a-0208-4869-8323-12bb9b92d317.png)
