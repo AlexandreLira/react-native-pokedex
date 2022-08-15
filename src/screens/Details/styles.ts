@@ -6,7 +6,7 @@ export const Container = styled.View`
   background-color: ${({ theme }) => theme.colors.background_primary};
 `;
 
-export const Header = styled.View`
+export const Header = styled.SafeAreaView`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
@@ -47,11 +47,10 @@ export const PokemonImage = styled.Image`
   z-index: 99;
 `;
 
-export const InformationContent = styled.ScrollView`
+export const InformationContent = styled.View`
   border-top-left-radius: 50px;
   border-top-right-radius: 50px;
   padding: 15% 4% 4% 4%;
-  height: 110%;
   background-color: white;
 `;
 

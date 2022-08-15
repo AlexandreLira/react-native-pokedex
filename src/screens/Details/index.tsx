@@ -27,6 +27,7 @@ import {
 
 import theme from "../../styles/theme";
 import { pokemonImageNotFound } from '../../utils/constant';
+import { ScrollView } from 'react-native';
 interface Params {
   data: PokemonDTO
 }
@@ -42,11 +43,13 @@ export function Details() {
 
   return (
     <Container>
+      <ScrollView>
+
       <StatusBar
         style="auto"
         translucent={false}
         backgroundColor={colors.background_primary}
-      />
+        />
       <Header>
         <Button onPress={() => navigation.goBack()}>
           <Ionicons name="arrow-back" size={30} color="black" />
@@ -70,7 +73,7 @@ export function Details() {
         <PokemonImage
           style={{ resizeMode: 'contain' }}
           source={{ uri: data.sprites.other.home.front_default || pokemonImageNotFound }}
-        />
+          />
       </ImageContent>
 
       <InformationContent>
@@ -78,23 +81,24 @@ export function Details() {
 
         {data.stats.map(item => (
           <Stats
-            key={item.stat.name}
-            stats={item}
-            color={color}
+          key={item.stat.name}
+          stats={item}
+          color={color}
           />
-
-        ))}
+          
+          ))}
 
       <Title>Abilities</Title>
 
       {data.abilities.map(item => (
-          <Ability key={item.ability.name}>{item.ability.name}</Ability>
-      ))}
+        <Ability key={item.ability.name}>{item.ability.name}</Ability>
+        ))}
 
       </InformationContent>
 
 
 
+        </ScrollView>
     </Container>
   )
 }

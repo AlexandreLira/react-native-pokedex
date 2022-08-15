@@ -38,9 +38,11 @@ export function PokemonsProvider({ children }: PokemonsProviderProps) {
 
     useEffect(() => {
         async function loadSavedPokemonsStorage(){
-            const storage = await AsyncStorage.getItem('@savedPokemons')
-            const pokemonsId = JSON.parse(storage)
-            setSavedPokemons(pokemonsId)
+            const storage: any = await AsyncStorage.getItem('@savedPokemons')
+            if(Boolean(storage)){
+                const pokemonsId = JSON.parse(storage)
+                setSavedPokemons(pokemonsId)
+            }
         }
         loadSavedPokemonsStorage()
     }, [])
