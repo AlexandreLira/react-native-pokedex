@@ -15,6 +15,7 @@ import { usePokemons } from "../../hooks/usePokemons";
 import { PokemonDTO } from "../../dtos/PokemonDTO";
 import { pokemonImageNotFound } from "../../utils/constant";
 import { useNavigation } from "@react-navigation/native";
+import { SharedElement } from 'react-navigation-shared-element';
 
 interface PokemonCardProps {
   data: PokemonDTO;
@@ -40,11 +41,13 @@ export function PokemonCard({ data }: PokemonCardProps) {
         </SaveButton>
       </Header>
 
-      <ImageContainer onPress={() => navigation.navigate('Details', {data})}>
-        <PokemonImage
-          style={{ resizeMode: 'contain' }}
-          source={{ uri: data.sprites.other.home.front_default || pokemonImageNotFound }}
-        />
+      <ImageContainer onPress={() => navigation.navigate('Details', { data })}>
+        <SharedElement id={String(data.id)}>
+          <PokemonImage
+            style={{ resizeMode: 'contain' }}
+            source={{ uri: data.sprites.other.home.front_default || pokemonImageNotFound }}
+          />
+        </SharedElement>
 
       </ImageContainer>
       <PokemonTypes types={data.types.map(item => item.type.name)} key={data.name} />
